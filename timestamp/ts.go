@@ -46,3 +46,8 @@ func GetMonthUnixStr(month int) string {
 func GetNow() int64 {
 	return time.Now().Unix()
 }
+
+// 获取当前时间戳字符串
+func GetNowStr() string {
+	return convert.ToString(GetNow())
+}
