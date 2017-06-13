@@ -4,12 +4,20 @@ import (
 	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
+	"errors"
 )
 
 type Aes struct {
 }
 
-func (this Aes) Encode(origData, key []byte) ([]byte, error) {
+func (this Aes) Encode(origData, key []byte) (res []byte, err error) {
+	defer func() {
+		if msg := recover(); msg != nil {
+			res = nil
+			err = errors.New(msg.(string))
+			return
+		}
+	}()
 	block, err := aes.NewCipher(key)
 	if err != nil {
 		return nil, err
@@ -25,7 +33,14 @@ func (this Aes) Encode(origData, key []byte) ([]byte, error) {
 	return crypted, nil
 }
 
-func (this Aes) Decode(crypted, key []byte) ([]byte, error) {
+func (this Aes) Decode(crypted, key []byte) (res []byte, err error) {
+	defer func() {
+		if msg := recover(); msg != nil {
+			res = nil
+			err = errors.New(msg.(string))
+			return
+		}
+	}()
 	block, err := aes.NewCipher(key)
 	if err != nil {
 		return nil, err
