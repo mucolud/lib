@@ -5,6 +5,7 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"errors"
+	"fmt"
 )
 
 type Aes struct {
@@ -14,7 +15,7 @@ func (this Aes) Encode(origData, key []byte) (res []byte, err error) {
 	defer func() {
 		if msg := recover(); msg != nil {
 			res = nil
-			err = errors.New(msg.(string))
+			err = errors.New(fmt.Sprint(msg))
 			return
 		}
 	}()
@@ -37,7 +38,7 @@ func (this Aes) Decode(crypted, key []byte) (res []byte, err error) {
 	defer func() {
 		if msg := recover(); msg != nil {
 			res = nil
-			err = errors.New(msg.(string))
+			err = errors.New(fmt.Sprint(msg))
 			return
 		}
 	}()
