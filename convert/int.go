@@ -30,7 +30,18 @@ func ToInt(d interface{}) (v int) {
 	case float64:
 		v = int(d.(float64))
 		return
-
+	case uint:
+		v = int(d.(uint))
+		return
+	case uint16:
+		v = int(d.(uint16))
+		return
+	case uint32:
+		v = int(d.(uint32))
+		return
+	case uint64:
+		v = int(d.(uint64))
+		return
 	}
 	return 0
 }
@@ -58,6 +69,18 @@ func ToInt64(d interface{}) (v int64) {
 		return
 	case float64:
 		v = int64(d.(float64))
+		return
+	case uint:
+		v = int64(d.(uint))
+		return
+	case uint16:
+		v = int64(d.(uint16))
+		return
+	case uint32:
+		v = int64(d.(uint32))
+		return
+	case uint64:
+		v = int64(d.(uint64))
 		return
 
 	}
@@ -87,6 +110,18 @@ func ToInt32(d interface{}) (v int32) {
 		return
 	case float64:
 		v = int32(d.(float64))
+		return
+	case uint:
+		v = int32(d.(uint))
+		return
+	case uint16:
+		v = int32(d.(uint16))
+		return
+	case uint32:
+		v = int32(d.(uint32))
+		return
+	case uint64:
+		v = int32(d.(uint64))
 		return
 
 	}
