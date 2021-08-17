@@ -55,6 +55,9 @@ func ToInt64(d interface{}) (v int64) {
 	case byte:
 		v = int64(d.(byte))
 		return
+	case int:
+		v = int64(d.(int))
+		return
 	case int8:
 		v = int64(d.(int8))
 		return v
@@ -95,6 +98,9 @@ func ToInt32(d interface{}) (v int32) {
 		return
 	case byte:
 		v = int32(d.(byte))
+		return
+	case int:
+		v = int32(d.(int))
 		return
 	case int8:
 		v = int32(d.(int8))
